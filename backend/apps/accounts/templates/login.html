@@ -1,0 +1,80 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+
+<div class="login-box">
+  <div class="login-logo">
+    <a href="../../index2.html"><b>Hotel</b>IK</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Авторизуйтесь</p>
+
+      <form method="post">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+          {{form.pin}}
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-edit"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+            {{form.password}}
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+
+
+            <!-- REMEMBER ME  -->
+<!--          <div class="col-8">-->
+<!--            <div class="icheck-primary">-->
+<!--              <input type="checkbox" id="remember">-->
+<!--              <label for="remember">-->
+<!--                Запомнить меня-->
+<!--              </label>-->
+<!--            </div>-->
+<!--          </div>-->
+            <!-- /.REMEMBER ME  -->
+          <!-- /.col -->
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block">Войти</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+
+<!--      <p class="mb-1">-->
+<!--        <a href="forgot-password.html">Восстановить пароль</a>-->
+<!--      </p>-->
+
+      <p class="mb-0">
+        <a href="register.html" class="text-center">Зарегистрироваться</a>
+      </p>
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+{% endblock %}
+
+
+
+
+
+
+
+
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Войти</button>
+</form>

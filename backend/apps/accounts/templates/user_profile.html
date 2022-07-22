@@ -1,0 +1,81 @@
+{% extends 'base_template.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Панель управления</h1>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+
+
+
+
+
+
+
+
+      <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Таблица броней</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Комнаты</th>
+                      <th>Клиент</th>
+                      <th>Заезд</th>
+                      <th>Выезд</th>
+                      <th>Статус</th>
+                      <th>Сотрудник</th>
+                      <th>Редактировать</th>
+                      <th>Удалить</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for book in bookings %}
+                    {% if book.status == 'Бронь' %}
+                    <tr style="background-color:#ffff00;">
+                    {% elif book.status == 'Проживает' %}
+                    <tr style="background-color:#2dd700;">
+                    {% endif %}
+                      <td>{{ book.room_id }}</td>
+                      <td>{{ book.guest_name }}</td>
+                      <td>{{ book.check_in }}</td>
+                      <td>{{ book.check_out }}</td>
+                      <td>{{ book.status }}</td>
+                      <td>{{ book.creater }}</td>
+                      <td><a href=""><button type="button" class="btn btn-block btn-success btn-xs">Редактировать</button></a></td>
+                      <td><a href=""><button type="button" class="btn btn-block btn-danger btn-xs">Удалить</button></a></td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <a href="{% url 'new_booking' %}" class="float-right"><button type="button" class="btn btn-block btn-primary btn-sm">Добавить новую бронь</button></a>
+              </div>
+            </div>
+
+
+
+
+
+
+    </section>
+    <!-- /.content -->
+  </div>
+{% endblock %}

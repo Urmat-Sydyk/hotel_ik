@@ -34,8 +34,8 @@ class User(AbstractUser):
     pin = models.CharField('ПИН', max_length=15, unique=True)
     first_name = models.CharField('Фамилия', max_length=150, blank=True)
     middle_name = models.CharField('Имя', max_length=100, blank=True)
-    last_name = models.CharField('Отчество', max_length=100, blank=True)
-    avatar = models.ImageField('Фото', upload_to='teachers_images/', null=True, blank=True)
+    last_name = models.CharField('Отчество', max_length=100, blank=True, null=True)
+    avatar = models.ImageField('Фото', upload_to='user_avatars/', null=True, blank=True)
     is_active = models.BooleanField('Работает', default=False)
     mobile = models.CharField("Телефон", max_length=10, null=True)
 
