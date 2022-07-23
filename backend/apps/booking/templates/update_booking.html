@@ -1,8 +1,7 @@
 {% extends 'base_template.html' %}
 {% load static %}
-
 {% block content %}
-<div class="content-wrapper">
+              <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -22,7 +21,7 @@
             <!-- jquery validation -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Новая бронь</h3>
+                <h3 class="card-title">Редактировать бронь "{{ object }}"</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -64,10 +63,10 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Добавить бронь</button>
+                    <button type="submit" class="btn btn-primary">Редактировать</button>
                 </div>
               </form>
-            </div>
+                </div>
             <!-- /.card -->
             </div>
           <!--/.col (left) -->
@@ -80,24 +79,24 @@
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
-</div>
+              </div>
 
 {% endblock %}
-
 {% block js %}
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script>
-  $(function () {
-    $("#datetimepicker1").datetimepicker({
-      format: 'DD/MM/YYYY HH:mm',
-    });
-  });
-</script>
-  <script>
-  $(function () {
-    $("#datetimepicker2").datetimepicker({
-      format: 'DD/MM/YYYY HH:mm',
-    });
-  });
-</script>
+                  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+              <script>
+
+              $(function () {
+                $("#datetimepicker1").datetimepicker({
+                  format: 'DD/MM/YYYY HH:mm',
+                });
+              });
+            </script>
+              <script>
+              $(function () {
+                $("#datetimepicker2").datetimepicker({
+                  format: 'DD/MM/YYYY HH:mm',
+                });
+              });
+            </script>
 {% endblock %}

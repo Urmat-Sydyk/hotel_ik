@@ -60,7 +60,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="{% url 'profile' %}" class="brand-link">
       <img src="{% static 'dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">HotelIK </span>
     </a>
@@ -77,7 +77,7 @@
           {% endif %}
         </div>
         <div class="info">
-          <a href="#" class="d-block"> {{request.user.first_name}} {{request.user.middle_name}}</a>
+          <a href="{% url 'profile' %}" class="d-block"> {{request.user.first_name}} {{request.user.middle_name}}</a>
         </div>
       </div>
       <a href="{% url 'user_update' request.user.id %}" class="btn btn-block btn-secondary btn-xs"><button type="button" class="btn btn-block btn-secondary btn-xs">Редактировать профиль</button></a>
@@ -90,10 +90,10 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
+            <a href="{% url 'profile' %}" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
-                Calendar
+                Бронирование
               </p>
             </a>
           </li>
@@ -113,11 +113,11 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-    {% block content %}
+  {% block content %}
 
-    {% endblock %}
+  {% endblock %}
 
-    {% block js %}
+  {% block js %}
   {% endblock %}
   <!-- /.content-wrapper -->
   <footer class="main-footer">

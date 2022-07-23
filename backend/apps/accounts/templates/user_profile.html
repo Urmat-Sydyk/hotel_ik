@@ -18,13 +18,6 @@
     <!-- Main content -->
     <section class="content">
 
-
-
-
-
-
-
-
       <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Таблица броней</h3>
@@ -57,23 +50,19 @@
                       <td>{{ book.check_out }}</td>
                       <td>{{ book.status }}</td>
                       <td>{{ book.creater }}</td>
-                      <td><a href=""><button type="button" class="btn btn-block btn-success btn-xs">Редактировать</button></a></td>
-                      <td><a href=""><button type="button" class="btn btn-block btn-danger btn-xs">Удалить</button></a></td>
+                      <td><a href="{% url 'update_booking' book.id %}">
+                        <button type="button" class="btn btn-block btn-success btn-xs" >Редактировать</button>
+                      </a></td>
+                      <td><a href="{% url 'delete_booking' book.id %}"><button type="button" class="btn btn-block btn-danger btn-xs">Удалить</button></a></td>
                     </tr>
                   {% endfor %}
                   </tbody>
                 </table>
               </div>
-              <!-- /.card-body -->
-              <div class="card-footer clearfix">
+<div class="card-footer clearfix">
                 <a href="{% url 'new_booking' %}" class="float-right"><button type="button" class="btn btn-block btn-primary btn-sm">Добавить новую бронь</button></a>
               </div>
-            </div>
-
-
-
-
-
+      </div>
 
     </section>
     <!-- /.content -->

@@ -25,7 +25,7 @@ class Rooms(models.Model):
 
 
 class Booking(models.Model):
-    guest_name = models.CharField(max_length=15, verbose_name='ФИО клиента')
+    guest_name = models.CharField(max_length=100, verbose_name='ФИО клиента')
     room_id = models.ForeignKey(Rooms, on_delete=models.CASCADE, verbose_name='Комната')
     check_in = models.DateTimeField(verbose_name='Дата заезда')
     check_out = models.DateTimeField(verbose_name='Дата выезда')

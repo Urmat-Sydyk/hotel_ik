@@ -4,10 +4,11 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView, DeleteView
 
 from backend.apps.accounts.models import User
-from backend.apps.booking.forms import BookingCreateForm
+from backend.apps.booking.forms import BookingCreateForm, BookingUpdateForm
+from backend.apps.booking.models import Booking
 
 
 class BookingCreateView(LoginRequiredMixin, CreateView):
@@ -23,3 +24,18 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
         # Наконец сохраняем в БД
         fields.save()
         return super().form_valid(form)
+
+
+class BookingUpdateView(LoginRequiredMixin, UpdateView):
+    form_class = BookingUpdateForm
+    template_name = 'update_booking.html'
+    success_url = reverse_lazy('profile')
+    queryset = Booking.objects.all()
+    model = Booking
+
+
+class BookingDeleteView(DeleteView):
+    model = Booking
+    success_url = reverse_lazy('profile')
+    template_name = 'confirm_delete_booking.html'
+
