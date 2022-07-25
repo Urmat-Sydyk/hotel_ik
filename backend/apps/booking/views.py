@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 
 from backend.apps.accounts.models import User
 from backend.apps.booking.forms import BookingCreateForm, BookingUpdateForm

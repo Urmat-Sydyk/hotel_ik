@@ -9,8 +9,24 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0">Панель управления</h1>
+
           </div><!-- /.col -->
-        </div><!-- /.row -->
+
+                <div class="col-sm-6">
+                    <form action="{% url 'search' %}" method="get">
+                        <div class="input-group">
+                            <input type="text" name="query" class="form-control form-control-lg" placeholder="Введите ФИО клиента или дату заезда (YYYY-MM-DD)">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-lg btn-default">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -19,9 +35,39 @@
     <section class="content">
 
       <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Таблица броней</h3>
+              <div class="card-header row mb-2">
+                  <div class="col-sm-8">
+                {% if search %}
+                  <h3 class="card-title">Результаты поиска по запросу: <i>"{{search_query}}"</i></h3>
+                {% elif filter %}
+                  <h3 class="card-title">Таблица броней <i>с {{from_date}} по {{to_date}}</i></h3>
+                {% else %}
+                  <h3 class="card-title">Таблица броней</h3>
+                {% endif %}
               </div>
+                <div class="col-sm-4">
+                    <form action="{% url 'filter' %}" method="get">
+                        <div class="input-group row mb-2">
+                            <div class="input-group date col-sm-4" id="datetimepicker1" data-target-input="nearest">
+                                <input type="text" name="from_date" class="form-control" placeholder="Дата от">
+                                <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                              </div>
+                            <div class="input-group date col-sm-4" id="datetimepicker2" data-target-input="nearest">
+                                <input type="text" name="to_date" class="form-control" placeholder="Дата до">
+                                <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                              </div>
+                            <div class="input-group-append col-sm-4">
+                                <button type="submit" class="btn btn-block btn-info btn-sm">Перейти</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+              </div>
+
               <!-- /.card-header -->
               <div class="card-body">
                 <table class="table table-bordered">
@@ -59,12 +105,40 @@
                   </tbody>
                 </table>
               </div>
-<div class="card-footer clearfix">
-                <a href="{% url 'new_booking' %}" class="float-right"><button type="button" class="btn btn-block btn-primary btn-sm">Добавить новую бронь</button></a>
-              </div>
+
+
+            <div class="card-footer clearfix row mb-2">
+                <div class="col-sm-6">На текущую дату {{date_now}} проживает {{guest_count}} гостя(ей)</div>
+                <div class="col-sm-6">
+                    {% if not search and not filter %}
+                    <a href="{% url 'new_booking' %}" class="float-right"><button type="button" class="btn btn-block btn-primary btn-sm">Добавить новую бронь</button></a>
+                    {% endif %}
+                </div>
+
+
+
+            </div>
+
       </div>
 
     </section>
     <!-- /.content -->
   </div>
+{% endblock %}
+{% block js %}
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script>
+  $(function () {
+    $("#datetimepicker1").datetimepicker({
+      format: 'YYYY-MM-DD',
+    });
+  });
+</script>
+  <script>
+  $(function () {
+    $("#datetimepicker2").datetimepicker({
+      format: 'YYYY-MM-DD',
+    });
+  });
+</script>
 {% endblock %}
